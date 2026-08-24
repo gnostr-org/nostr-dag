@@ -2,7 +2,7 @@
 name = "nostr-dag"
 version = "0.10.2"
 edition = "2021"
-repository = "https://github.com/RandyMcMillan/nostr-dag"
+repository = "https://github.com/gnostr-org/nostr-dag"
 license = "MIT"
 description = "DAG-based optimistic consensus for Nostr"
 
