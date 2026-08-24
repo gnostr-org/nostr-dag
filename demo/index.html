@@ -1338,8 +1338,8 @@
         await cloneRepo('https://github.com/isomorphic-git/isomorphic-git', dir);
         await fetchAllTags('https://github.com/isomorphic-git/isomorphic-git', dir);
         setGitStatus('cloning nostr-dag...');
-        await cloneRepo('https://github.com/RandyMcMillan/nostr-dag', nostrDagDir);
-        await fetchAllTags('https://github.com/RandyMcMillan/nostr-dag', nostrDagDir);
+        await cloneRepo('https://github.com/gnostr-org/nostr-dag', nostrDagDir);
+        await fetchAllTags('https://github.com/gnostr-org/nostr-dag', nostrDagDir);
 
         setGitStatus('reading history...');
         const commits = await git.log({ fs, dir });
