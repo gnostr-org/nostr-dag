@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="./shared/favicon.ico" />
-<link rel="stylesheet" href="../shared/page.css" />
+<link rel="stylesheet" href="./shared/page.css" />
 <title>nostr-dag Demo</title>
 
   </head>
@@ -107,7 +107,11 @@
 
   <script type="module">
     // Step 4: import the WASM DAG and browser-only Nostr/libp2p helpers.
-    import init, { WasmDag } from './pkg/nostr_dag.js';
+    const wasmModuleUrl = resolveHref('./pkg/nostr_dag.js', window.location.href);
+    const wasmBinaryUrl = resolveHref('./pkg/nostr_dag_bg.wasm', window.location.href);
+    const wasmPkg = await import(wasmModuleUrl);
+    const init = wasmPkg.default;
+    const { WasmDag } = wasmPkg;
     import { finalizeEvent, getPublicKey } from 'https://esm.sh/nostr-tools@2.10.4/pure';
     import { neventEncode, npubEncode } from 'https://esm.sh/nostr-tools@2.10.4/nip19';
     import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
@@ -1206,7 +1210,7 @@
     try {
       window.__sharedFooter?.log('demo', 'boot sequence starting', 'debug', 'checking');
       setControlsEnabled(true);
-      await init();
+      await init(wasmBinaryUrl);
       await initParticipants();
       dag = new WasmDag(JSON.stringify(participants.map((p) => p.pk)));
       startRelayDiscovery();
