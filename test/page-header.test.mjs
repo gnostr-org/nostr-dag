@@ -16,7 +16,7 @@ test('shared header renders nav and active state', async () => {
   };
 
   createSharedHeader(root, {
-    title: 'nostr-dag',
+    title: 'bitcoin-pages',
     logoHref: './',
     subtitleHtml: 'Shared chrome',
     navItems: [

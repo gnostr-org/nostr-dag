@@ -1,8 +1,8 @@
 [package]
-name = "nostr-dag"
+name = "bitcoin-pages"
 version = "0.10.2"
 edition = "2021"
-repository = "https://github.com/gnostr-org/nostr-dag"
+repository = "https://github.com/bitcoincore-dev/bitcoin-pages"
 license = "MIT"
 description = "DAG-based optimistic consensus for Nostr"
 
@@ -48,8 +48,8 @@ path = "src/bin/relay.rs"
 required-features = ["relay"]
 
 [[bin]]
-name = "nostr-dag-server"
-path = "src/bin/nostr-dag-server.rs"
+name = "bitcoin-pages-server"
+path = "src/bin/bitcoin-pages-server.rs"
 required-features = ["native"]
 
 [features]

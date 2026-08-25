@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="../shared/favicon.ico" />
 <link rel="stylesheet" href="../shared/page.css" />
-<title>nostr-dag Git Viewer</title>
+<title>bitcoin-pages Git Viewer</title>
 
 </head>
 <body>
@@ -31,7 +31,7 @@
     import { resolveHref } from '../shared/page-path.js';
 
     createSharedHeader(document.getElementById('sharedHeader'), {
-      title: 'nostr-dag',
+      title: 'bitcoin-pages',
       logoHref: resolveHref('../', window.location.href),
       iconHref: resolveHref('../shared/favicon.ico', window.location.href),
       subtitleHtml: '',
@@ -54,13 +54,13 @@
     import LightningFS from 'https://cdn.jsdelivr.net/npm/@isomorphic-git/lightning-fs@4.6.0/+esm';
 
     const fs = new LightningFS('git-viewer');
-    const REPO_CACHE_KEY = 'nostr-dag-git-repo-cache-v1';
+    const REPO_CACHE_KEY = 'bitcoin-pages-git-repo-cache-v1';
     const repoHealth = new Map();
     const repos = [
       {
-        name: 'nostr-dag',
-        url: 'https://github.com/gnostr-org/nostr-dag',
-        dir: '/repos/nostr-dag',
+        name: 'bitcoin-pages',
+        url: 'https://github.com/gnostr-org/bitcoin-pages',
+        dir: '/repos/bitcoin-pages',
       },
       {
         name: 'isomorphic-git',
