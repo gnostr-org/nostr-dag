@@ -1,4 +1,4 @@
-# nostr-dag
+# bitcoin-pages
 
 DAG-based optimistic consensus for Nostr federations.
 
@@ -47,7 +47,7 @@ Click "Connect", then send messages. Watch them go from pending (gray) to canoni
 The Git viewer now supports a repo detail view on the same static page:
 
 - `/git/` shows the repository grid
-- `/git/?repo=nostr-dag&branch=master&tag=...` opens a single repo detail panel
+- `/git/?repo=bitcoin-pages&branch=master&tag=...` opens a single repo detail panel
 - the detail panel loads branches, tags, recent commits, and tracked files from the local clone
 
 This stays on the static `/git/` route so it works with the local file server and Safari without requiring deep-link rewrites.
@@ -61,7 +61,7 @@ The shared browser helpers are copied into `site/shared/`, and the local server 
 - `src/bin/federation.rs` - Runs one federation daemon that watches the relay and publishes acks
 - `src/bin/relay.rs` - Starts the local Nostr relay for the demo
 - `src/bin/keygen.rs` - Prints demo federation keys and startup commands
-- `src/bin/nostr-dag-server.rs` - Serves the built site locally from `site/`
+- `src/bin/bitcoin-pages-server.rs` - Serves the built site locally from `site/`
 - `demo/index.html` - Browser frontend
 - `demo/run.sh` - Demo launcher script
 

@@ -7,9 +7,9 @@ import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
 
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
-    const CACHE_KEY = 'nostr-dag-bridge-cache-v2';
-    const SIGNER_KEY = 'nostr-dag-bridge-signer-v1';
-    const BRIDGE_PROTOCOL = 'nostr-dag-bridge';
+    const CACHE_KEY = 'bitcoin-pages-bridge-cache-v2';
+    const SIGNER_KEY = 'bitcoin-pages-bridge-signer-v1';
+    const BRIDGE_PROTOCOL = 'bitcoin-pages-bridge';
     const BRIDGE_PROTOCOL_VERSION = 1;
     const DEFAULT_RELAYS = [
       'wss://relay.damus.io',
@@ -22,7 +22,7 @@ import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
 
     if (!window.__bridgeChromeInitialized) {
       createSharedHeader(document.getElementById('sharedHeader'), {
-        title: 'nostr-dag',
+        title: 'bitcoin-pages',
         logoHref: resolveHref('../', window.location.href),
         iconHref: resolveHref('../shared/favicon.ico', window.location.href),
         subtitleHtml: '',
@@ -221,8 +221,8 @@ import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
         ...DEFAULT_RELAYS,
       ]);
       const payload = {
-        name: 'nostr-dag bridge',
-        display_name: 'nostr-dag bridge',
+        name: 'bitcoin-pages bridge',
+        display_name: 'bitcoin-pages bridge',
         about: `libp2p peer ${node?.peerId?.toString?.() || 'starting'} broadcasting to Nostr relays.`,
         bridge_peer_id: node?.peerId?.toString?.() || '',
         bridge_protocol: BRIDGE_PROTOCOL,
@@ -235,7 +235,7 @@ import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
         kind: 0,
         created_at: Math.floor(Date.now() / 1000),
         tags: [
-          ['t', 'nostr-dag'],
+          ['t', 'bitcoin-pages'],
           ['t', 'bridge'],
         ],
         content: JSON.stringify(payload),
@@ -262,7 +262,7 @@ import { SimplePool } from 'https://esm.sh/nostr-tools@2.10.4/pool';
         ...collectBridgeRelayHints(message.relays),
         ...collectBridgeRelayHints(message.relayTargets),
       ];
-      if (protocol && protocol !== BRIDGE_PROTOCOL && protocol !== 'nostr-dag-bridge') {
+      if (protocol && protocol !== BRIDGE_PROTOCOL && protocol !== 'bitcoin-pages-bridge') {
         return null;
       }
       if (!event || !isNostrEvent(event)) return null;

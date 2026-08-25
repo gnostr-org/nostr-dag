@@ -18,7 +18,7 @@ function normalizeState(text, fallback = 'idle') {
 }
 
 const LOG_LEVELS = ['none', 'info', 'debug', 'trace', 'warn', 'error'];
-const STORAGE_PREFIX = 'nostr-dag.logger-footer';
+const STORAGE_PREFIX = 'bitcoin-pages.logger-footer';
 const LOGGER_INGEST_PATH = '/logger';
 const FOOTER_SPACER_VAR = '--sticky-footer-space';
 const SCROLLBAR_ACTIVE_CLASS = 'scrollbars-active';
@@ -337,7 +337,7 @@ export function createLoggerFooter(root, options = {}) {
   function saveVisibleLogs() {
     const visibleLogs = level === 'none' ? [] : logs.filter((entry) => entry.level === level);
     const text = visibleLogs.map((entry) => `[${entry.time}] ${entry.label ? `${entry.label}: ` : ''}${entry.text}`).join('\n');
-    const filename = `nostr-dag-${Math.floor(Date.now() / 1000)}.log`;
+    const filename = `bitcoin-pages-${Math.floor(Date.now() / 1000)}.log`;
     const blob = new Blob([text ? `${text}\n` : ''], { type: 'text/plain;charset=utf-8' });
     const url = globalThis.URL?.createObjectURL?.(blob);
 

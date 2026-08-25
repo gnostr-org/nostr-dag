@@ -1,6 +1,6 @@
 import { resolveHref } from './page-path.js';
 
-const CACHE_KEY = 'nostr-dag-bridge-cache-v2';
+const CACHE_KEY = 'bitcoin-pages-bridge-cache-v2';
 
 const detailEl = document.getElementById('relayDetail');
 const relayParam = new URL(window.location.href).searchParams.get('relay');
@@ -247,7 +247,7 @@ async function boot() {
   const cache = loadBridgeCache();
   const source = sourceForRelay(relay, cache.relayCatalog) || '';
   const cachedInfo = cache.relayInfoCatalog.get(relay) || null;
-  document.title = relay ? `nostr-dag Relay Detail · ${relay}` : 'nostr-dag Relay Detail';
+  document.title = relay ? `bitcoin-pages Relay Detail · ${relay}` : 'bitcoin-pages Relay Detail';
   renderRelayDetail(relay, cachedInfo, source, !cachedInfo || cachedInfo.error);
   const info = await fetchRelayInfo(relay);
   renderRelayDetail(relay, info, source, false);

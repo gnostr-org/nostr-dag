@@ -13,7 +13,7 @@ use rand::Rng;
 use tokio::sync::Mutex;
 use tracing::{debug, error, info, trace, warn};
 
-use nostr_dag::{create_ack_event, Dag, InsertResult, DAG_EVENT_KIND};
+use bitcoin_pages::{create_ack_event, Dag, InsertResult, DAG_EVENT_KIND};
 
 const CHANNEL_MESSAGE_KIND: Kind = Kind::Custom(42);
 

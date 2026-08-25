@@ -1,4 +1,4 @@
-# Copilot instructions for nostr-dag
+# Copilot instructions for bitcoin-pages
 
 ## Project shape
 
@@ -6,7 +6,7 @@
 - `src/event.rs` defines the DAG ack event kind (`Kind::Custom(21000)`) plus helpers for building and reading parent `e` tags.
 - `src/lib.rs` re-exports the public Rust API and gates the WASM bindings behind the `wasm` feature.
 - Native binaries live under `src/bin/`:
-  - `federation` and `nostr-dag-server` require `native`
+  - `federation` and `bitcoin-pages-server` require `native`
   - `relay` requires `relay`
   - `keygen` is a native helper for demo setup
 - The browser app lives in `demo/`; `site/` is generated Pages output. Shared browser modules and chrome live in `demo/shared/` and are copied into `site/shared/` by the site build.

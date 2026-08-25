@@ -18,7 +18,7 @@ export function createSharedHeader(root, options = {}) {
     };
   }
 
-  const title = options.title || 'nostr-dag';
+  const title = options.title || 'bitcoin-pages';
   const subtitleHtml = options.subtitleHtml || '';
   const logoHref = options.logoHref || '#';
   const iconHref = options.iconHref || './shared/favicon.ico';
