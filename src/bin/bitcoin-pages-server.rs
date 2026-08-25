@@ -18,7 +18,7 @@ use tokio::sync::{Semaphore, watch};
 use tokio::task::JoinSet;
 use tracing::{debug, error, info, trace};
 
-use nostr_dag::FAVICON_ICO;
+use bitcoin_pages::FAVICON_ICO;
 
 const DEFAULT_HOST: &str = "127.0.0.1";
 const DEFAULT_PORT: u16 = 3000;
@@ -125,14 +125,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let site_dir = env::var("SITE_DIR").unwrap_or_else(|_| DEFAULT_SITE_DIR.to_string());
     let logger_store = Arc::new(LoggerStore::default());
     let peer_store = Arc::new(PeerStore::default());
-    let http_client = Arc::new(reqwest::Client::builder().user_agent("nostr-dag/0.9.1").build()?);
+    let http_client = Arc::new(reqwest::Client::builder().user_agent("bitcoin-pages/0.9.1").build()?);
     let (shutdown_tx, shutdown_rx) = watch::channel(());
 
     let addr = format!("{host}:{port}");
     let listener = TcpListener::bind(&addr).await?;
     let mut connections = JoinSet::new();
 
-    info!(%addr, site_dir = %site_dir, "nostr-dag server listening");
+    info!(%addr, site_dir = %site_dir, "bitcoin-pages server listening");
     println!("SERVER_URL=http://{addr}");
 
     loop {

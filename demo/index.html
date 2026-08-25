@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="./shared/favicon.ico" />
 <link rel="stylesheet" href="./shared/page.css" />
-<title>nostr-dag Demo</title>
+<title>bitcoin-pages Demo</title>
 
   </head>
   <body>
@@ -93,7 +93,7 @@
     import { resolveHref } from './shared/page-path.js';
 
     createSharedHeader(document.getElementById('sharedHeader'), {
-      title: 'nostr-dag',
+      title: 'bitcoin-pages',
       logoHref: resolveHref('./', window.location.href),
       iconHref: resolveHref('./shared/favicon.ico', window.location.href),
       subtitleHtml: '',
@@ -107,8 +107,8 @@
 
   <script type="module">
     // Step 4: import the WASM DAG and browser-only Nostr/libp2p helpers.
-    const wasmModuleUrl = resolveHref('./pkg/nostr_dag.js', window.location.href);
-    const wasmBinaryUrl = resolveHref('./pkg/nostr_dag_bg.wasm', window.location.href);
+    const wasmModuleUrl = resolveHref('./pkg/bitcoin_pages.js', window.location.href);
+    const wasmBinaryUrl = resolveHref('./pkg/bitcoin_pages_bg.wasm', window.location.href);
     const wasmPkg = await import(wasmModuleUrl);
     const init = wasmPkg.default;
     const { WasmDag } = wasmPkg;
@@ -126,9 +126,9 @@
       'wss://relay.primal.net',
       'wss://nostr.wine',
     ];
-    const CACHE_KEY = 'nostr-dag-demo-cache-v1';
-    const SITE_URL = 'https://randymcmillan.github.io/nostr-dag';
-    const QUORUM_ID = 'nostr-dag-quorum-5';
+    const CACHE_KEY = 'bitcoin-pages-demo-cache-v1';
+    const SITE_URL = 'https://bitcoincore-dev.github.io/bitcoin-pages';
+    const QUORUM_ID = 'bitcoin-pages-quorum-5';
     const PARTICIPANT_NAMES = ['alice', 'bob', 'carol', 'dave', 'eve'];
     const PARTICIPANT_DISPLAY_NAMES = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
 
@@ -746,7 +746,7 @@
         const profile = createParticipantProfile({
           name,
           displayName,
-          about: `Member ${i + 1} of the nostr-dag quorum`,
+          about: `Member ${i + 1} of the bitcoin-pages quorum`,
           picture: `https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(name)}`,
           website: SITE_URL,
           alternateSource: njumpProfileUrlForPubkey(pk),
@@ -810,7 +810,7 @@
       const tags = [
         ...participantPubkeys.map((pk) => ['p', pk]),
         ['d', QUORUM_ID],
-        ['t', 'nostr-dag'],
+        ['t', 'bitcoin-pages'],
         ['t', 'quorum'],
       ];
 
@@ -1301,7 +1301,7 @@
 
     const fs = new LightningFS('fs');
     const dir = '/repo';
-    const nostrDagDir = '/nostr-dag';
+    const nostrDagDir = '/bitcoin-pages';
 
     async function cloneRepo(repoUrl, targetDir) {
       await git.clone({
@@ -1341,9 +1341,9 @@
         setGitStatus('cloning...');
         await cloneRepo('https://github.com/isomorphic-git/isomorphic-git', dir);
         await fetchAllTags('https://github.com/isomorphic-git/isomorphic-git', dir);
-        setGitStatus('cloning nostr-dag...');
-        await cloneRepo('https://github.com/gnostr-org/nostr-dag', nostrDagDir);
-        await fetchAllTags('https://github.com/gnostr-org/nostr-dag', nostrDagDir);
+        setGitStatus('cloning bitcoin-pages...');
+        await cloneRepo('https://github.com/bitcoincore-dev/bitcoin-pages', nostrDagDir);
+        await fetchAllTags('https://github.com/bitcoincore-dev/bitcoin-pages', nostrDagDir);
 
         setGitStatus('reading history...');
         const commits = await git.log({ fs, dir });
